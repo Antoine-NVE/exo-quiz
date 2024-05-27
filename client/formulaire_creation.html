@@ -7,6 +7,8 @@
         <title>Formulaire de création</title>
 
         <link rel="stylesheet" href="./css/formulaire_creation.css" />
+
+        <script src="./js/formulaire_creation.js" defer></script>
     </head>
     <body>
         <header>
@@ -24,7 +26,35 @@
                 </ul>
             </nav>
         </header>
-        <main></main>
+        <main>
+            <div class="container">
+                <h1>Créer un quiz</h1>
+                <form>
+                    <div>
+                        <label for="question">Question :</label>
+                        <input id="question" type="text" />
+                        <span id="question-error" class="error"></span>
+                    </div>
+                    <div>
+                        <label for="answer-1">Réponse 1 :</label>
+                        <input id="answer-1" type="text" />
+                        <span id="answer-1-error" class="error"></span>
+                    </div>
+                    <div>
+                        <label for="answer-2">Réponse 2 :</label>
+                        <input id="answer-2" type="text" />
+                        <span id="answer-2-error" class="error"></span>
+                    </div>
+                    <div>
+                        <label for="good-answer">Bonne réponse :</label>
+                        <input id="good-answer" type="number" value="1" />
+                        <span id="good-answer-error" class="error"></span>
+                    </div>
+
+                    <button id="submit-button" class="submit" type="submit">Valider</button>
+                </form>
+            </div>
+        </main>
         <footer></footer>
     </body>
 </html>

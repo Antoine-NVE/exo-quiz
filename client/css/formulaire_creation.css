@@ -37,6 +37,59 @@ nav ul li a.active {
     color: white;
 }
 
+/* MAIN */
+
+.container {
+    width: 75%;
+    margin: 2rem auto;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+form {
+    font-size: 1.5rem;
+}
+
+form div {
+    margin-bottom: 1rem;
+}
+
+form div > * {
+    display: block;
+}
+
+form div input {
+    width: 100%;
+    border: 1px solid rgba(40, 40, 40, 0.5);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.error {
+    color: red;
+    font-size: 1.25rem;
+}
+
+.submit {
+    padding: 1rem;
+    background: rgb(80, 80, 80);
+    color: white;
+    border: 0;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    box-shadow: -2px 2px 2px rgb(150, 150, 150);
+}
+
+.submit:active {
+    transform: translate(-1px, 1px);
+    box-shadow: -1px 1px 1px rgb(150, 150, 150);
+}
+
 @media screen and (max-width: 768px) {
     nav ul li a {
         font-size: 1.5rem;
