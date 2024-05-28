@@ -1,20 +1,32 @@
-const Quiz = require('../models/Quiz');
+const Question = require('../models/Question');
+const Answer = require('../models/Answer');
 
 exports.createQuiz = (req, res) => {
-    const quiz = new Quiz({
+    const question = new Question({
         question: req.body.question,
-        answer1: req.body.answer1,
-        answer2: req.body.answer2,
-        goodAnswer: req.body.goodAnswer,
+        answer: req.body.answers[req.body.goodAnswer - 1],
     });
 
-    quiz.save()
+    question
+        .save()
+        .then((quiz) => {
+            const answer1 = new Answer({
+                answer: req.body.answers[0],
+                questionId: quiz._id,
+            });
+            const answer2 = new Answer({
+                answer: req.body.answers[1],
+                questionId: quiz._id,
+            });
+
+            return Promise.all([answer1.save(), answer2.save()]);
+        })
         .then(() => res.status(201).json({ message: 'Quiz créé' }))
         .catch((error) => res.status(400).json({ error }));
 };
 
 exports.readAllQuiz = (req, res) => {
-    Quiz.find()
+    Question.find()
         .then((quiz) => res.status(200).json({ quiz: quiz }))
         .catch((error) => res.status(400).json({ error }));
 };
