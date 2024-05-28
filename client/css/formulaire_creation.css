@@ -94,6 +94,10 @@ form div input {
     nav ul li a {
         font-size: 1.5rem;
     }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 @media screen and (max-width: 576px) {

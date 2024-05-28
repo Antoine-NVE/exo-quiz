@@ -37,9 +37,43 @@ nav ul li a.active {
     color: white;
 }
 
+/* MAIN */
+
+.container {
+    width: 75%;
+    margin: 2rem auto;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.quizContainer {
+    margin-bottom: 2rem;
+}
+
+button {
+    padding: 1rem 3rem;
+    cursor: pointer;
+    background: lightskyblue;
+    border: 0;
+    border-radius: 0.5rem;
+    box-shadow: -2px 2px 2px black;
+    margin: 0.5rem;
+}
+
+button:active {
+    transform: translate(-1px, 1px);
+    box-shadow: -1px 1px 1px black;
+}
+
 @media screen and (max-width: 768px) {
     nav ul li a {
         font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
     }
 }
 

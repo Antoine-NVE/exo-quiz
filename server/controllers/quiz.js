@@ -26,7 +26,24 @@ exports.createQuiz = (req, res) => {
 };
 
 exports.readAllQuiz = (req, res) => {
-    Question.find()
-        .then((quiz) => res.status(200).json({ quiz: quiz }))
+    Question.aggregate([
+        {
+            $lookup: {
+                from: 'answers',
+                localField: '_id',
+                foreignField: 'questionId',
+                as: 'answers',
+            },
+        },
+    ])
+        .then((quiz) => {
+            res.status(200).json(quiz);
+        })
+        .catch((error) => res.status(400).json({ error }));
+};
+
+exports.readOneQuiz = (req, res) => {
+    Question.findOne({ _id: req.params.id })
+        .then((question) => res.status(200).json(question))
         .catch((error) => res.status(400).json({ error }));
 };
