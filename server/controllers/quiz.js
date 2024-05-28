@@ -4,7 +4,7 @@ const Answer = require('../models/Answer');
 exports.createQuiz = (req, res) => {
     const question = new Question({
         question: req.body.question,
-        answer: req.body.answers[req.body.goodAnswer - 1],
+        goodAnswer: req.body.answers[req.body.goodAnswer - 1],
     });
 
     question

@@ -102,6 +102,31 @@ submitButton.addEventListener('click', (e) => {
     goodAnswerError.innerHTML = verifyGoodAnswer(goodAnswer.value);
 
     if (!hasErrors) {
-        console.log('coucou');
+        fetch('http://localhost:3000/api/quiz/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                question: question.value,
+                answers: [answer1.value, answer2.value],
+                goodAnswer: goodAnswer.value,
+            }),
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                if (response.error) {
+                    alert(`Une erreur client est survenue : ${response.error.message}`);
+                } else {
+                    alert(response.message);
+
+                    isSubmitted = false;
+                    question.value = '';
+                    answer1.value = '';
+                    answer2.value = '';
+                    goodAnswer.value = 1;
+                }
+            })
+            .catch((error) => {
+                alert(`Une erreur serveur est survenue : ${error}`);
+            });
     }
 });
